@@ -1,0 +1,196 @@
+﻿<html>
+<head>
+    <script>
+        var addition = 0;
+        var subtract = 0;
+        var product = 1;
+        var division = 1;
+        var sum = 0;
+        var sub = 0;
+        var pro = 0;
+        var div = 0;
+        function display(val) {
+            //document.getElementById("txtResult").value += val
+            txtResult.value = txtResult.value + val;
+        }
+        function clr() {
+            txtResult.value = "";
+            txtResult.placeholder = "";
+            addition = 0;
+            subtract = 0;
+            product = 1;
+            division = 1;
+            sum = 0;
+            sub = 0;
+            pro = 0;
+            div = 0;
+        }
+        function add() {
+            addition = parseFloat(txtResult.value) + addition;
+            txtResult.value = "";
+            txtResult.placeholder = addition;
+        }
+        function subtraction() {
+            subtract = parseFloat(txtResult.value) - subtract;
+            txtResult.value = "";
+            txtResult.placeholder = subtract;
+        }
+        function multiply() {
+            product = parseFloat(txtResult.value) * product;
+            txtResult.value = "";
+            txtResult.placeholder = product;
+        }
+        function divi() {
+            division = parseFloat(txtResult.value) / division;
+            txtResult.value = "";
+            txtResult.placeholder = division;
+        }
+        function solve() {
+            if (addition != 0) {
+                if (sum == 0) {
+                    sum = parseFloat(txtResult.value);
+                }
+                addition = addition + sum;
+                txtResult.value = addition;
+            }
+            else if (subtract != 0) {
+                if (sub == 0) {
+                    sub = parseFloat(txtResult.value);
+                }
+                subtract = subtract - sub;
+                txtResult.value = subtract;
+            }
+            else if (product != 1) {
+                if (pro == 0) {
+                    pro = parseFloat(txtResult.value);
+                }
+                product = product * pro;
+                txtResult.value = product;
+            }
+            else if (division != 1) {
+                if (div == 0) {
+                    div = parseFloat(txtResult.value);
+                }
+                division = division / div;
+                txtResult.value = division;
+            }
+            else {
+                txtResult.placeholder = "0";
+            }
+        }
+        
+    </script>
+
+    <style>
+
+        .calculator {
+            width: 350px;
+            height: auto;
+            /*border: solid black 2px;*/
+            background-color: dimgray;
+            /*text-align:center;*/
+            margin-left: auto;
+            margin-right: auto;
+            
+            /*padding-top: 50px;
+            padding-bottom: 50px;*/
+            position: relative;
+            top: 100px;
+            left:30px;
+        }
+
+        .table_cal {
+            width: 100%;
+            height: auto;
+        }
+
+        td {
+            /*border: 1px solid black;*/
+
+            padding: 10px;
+        }
+        .color {
+            background: linear-gradient(darkslategrey 30%, black 70%);
+            color: white;
+            font-size: larger;
+            /*border: solid black 2px;*/
+            width: 100%;
+            height: 60px;
+            border-radius: 5px;
+        }
+        .equals_to {
+            height: 135px;
+            background: linear-gradient(sandybrown 20%, saddlebrown 80%);
+        }
+        .color_button {
+            background: linear-gradient(coral 40%, chocolate 60%);
+        }
+        #txtResult {
+            text-align: right;
+            font-size: 30px;
+        }
+
+        input[type="text"] {
+            background-color: white;
+            /* margin:-10px;
+            margin-right:-50px;*/
+            border: none;
+            /*border: solid black 2px;*/
+            width: 100%;
+            height: 60px;
+        }
+        #bottomspan{
+            position:relative;
+            bottom:-40px;
+        }
+        .zero{      
+            text-align:left;
+            padding-left:27px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <table class="table_cal">
+            <tr>
+                <td colspan="4"><input type="text" id="txtResult" readonly /> </td>
+            </tr>
+            <tr>
+                <td colspan="2"  ><button type="button" id="btnclear" class="color color_button" value="clear" onclick="clr()">Clear</button> </td>
+                
+
+                <td><button type="button" value="/" id="btnDiv" class="color color_button" onclick="divi()">/</button> </td>
+                <td><button type="button" value="*" id="btnMul" class="color color_button" onclick="multiply()">*</button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" value="7" id="btnSeven" class="color" onclick="display('7')" >7</button> </td>
+                <td><button type="button" value="8" id="btnEight" class="color" onclick="display('8')" >8</button> </td>
+                <td><button type="button" value="9" id="btnNine" class="color" onclick="display('9')" >9</button> </td>
+                <td><button type="button" value="-" id="btnSub" class="color color_button" onclick="subtraction()" >-</button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" value="4" id="btnFour" class="color" onclick="display('4')" >4</button> </td>
+                <td><button type="button" value="5" id="btnFive" class="color" onclick="display('5')" >5</button> </td>
+                <td><button type="button" value="6" id="btnSix" class="color" onclick="display('6')" >6</button> </td>
+                <td><button type="button" value="+" id="btnAdd" class="color color_button" onclick="add()" >+</button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" value="1" id="btnOne" class="color" onclick="display('1')" >1</button> </td>
+                <td><button type="button" value="2" id="btnTwo" class="color" onclick="display('2')" >2</button> </td>
+                <td><button type="button" value="3" id="btnThree" class="color" onclick="display('3')" >3</button> </td>
+                <td rowspan="2"><button type="button" id="btnEqual" class="color equals_to" value="=" onclick="solve()" >
+                     <span id="bottomspan">=</span>
+                     </button> </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" value="0" id="btnZero" class="color zero" onclick="display('0')" >0</button>
+                </td>
+                <td><button type="button" value="." id="btnPoint" class="color" onclick="display('.')" >.</button> </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>   

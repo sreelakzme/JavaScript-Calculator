@@ -1,0 +1,197 @@
+﻿<html>
+<head>
+    <script>
+         var exp = "";
+         function display(val)
+         { 
+             document.getElementById("txtResult").value += val;
+             exp += val;     
+        }
+        function showZero(val) {
+            if (exp != '') {
+                display(val);
+            }
+        }
+        function operator(val) { 
+            //alert(exp.slice(-2));
+            //to avoid same operators together
+            if (val == exp.slice(-1)) {
+                val = '';
+            }
+            else if (exp == "" && val == "/") {
+                val = '';
+            }
+            else if (exp == '' && val == '*') {
+                val = '';
+            }
+            else if (val == '.' && exp.slice(-2).includes('.')) {
+                val = '';
+            }
+            //to avoid * + and / +
+            else if (val == '*' && exp.slice(-1) == '+' || val == '/' && exp.slice(-1) == '+') {
+                val = '';
+            }    
+            //to avoid * - and / -
+            else if (val == '*' && exp.slice(-1) == '-' || val == '/' && exp.slice(-1) == '-') {
+                val = '';
+            }
+            // to avoid * / and  / *
+            else if (val == '*' && exp.slice(-1) == '/' || val == '/' && exp.slice(-1) == '*') {
+                val = '';
+            }
+            else {
+                        display(val);    
+            }
+        }
+
+        
+         function solve()
+         {
+             if (document.getElementById("txtResult").value == '') {
+                 document.getElementById("txtResult").value = '0';
+             }
+             var x = document.getElementById("txtResult").value;
+            
+             var y = eval(x);
+             document.getElementById("txtResult").value = y;
+         }
+
+         
+        function clr()
+        {
+             document.getElementById("txtResult").value = "";
+        }
+        function plusMinus() {
+            if (txtResult.value != 0) {
+                txtResult.value = 0 - parseFloat(txtResult.value);
+            }
+            else {
+                txtResult.value = "";
+            }
+        }
+    </script>
+    
+    <style>
+        *{
+            box-sizing:border-box;
+            font-size:25px;
+            font-weight:bold;
+        }
+        div.calculator {
+            width: 350px;
+            height: auto;
+            /*border: solid black 2px;*/
+            background-color: dimgray;
+            margin-left: auto;
+            margin-right: auto;
+            top: 20px;
+        }
+
+        table.table_cal {
+            width: 100%;
+            height: auto;
+        }
+
+        td {
+            /*border: 1px solid black;*/
+
+            padding: 5px;
+        }
+
+        button.color {
+            background: linear-gradient(darkslategrey 30%, black 70%);
+            color: white;
+            font-size: larger;
+            /*border: solid black 2px;*/
+            width: 100%;
+            height: 60px;
+            border-radius: 10px;
+        }
+
+        button.equals_to {
+            height: 135px;
+            background: linear-gradient(sandybrown 20%, saddlebrown 80%);
+        }
+
+        button.color_button {
+            background: linear-gradient(coral 40%, chocolate 60%);
+        }
+
+        input[type="text"] {
+            background-color: white;
+            /* margin:-10px;
+            margin-right:-50px;*/
+            border: none;
+            /*border: solid black 2px;*/
+            width: 100%;
+            height: 60px;
+            text-align: right;
+            font-size: 30px;
+        }
+
+        #bottomspan {
+            position: relative;
+            bottom: -40px;
+            /*border:2px solid red;*/
+        }
+
+        button.zero {
+            text-align: left;
+            padding-left: 27px;
+        }
+        button.faltu {
+            background: linear-gradient(grey 30%, black 70%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <table class="table_cal">
+            <tr>
+                <td colspan="4"><input type="text" id="txtResult" readonly /> </td>
+            </tr>
+            <tr>
+                <td><button type="button" id="btnMc" class="color faltu">mc</button></td>
+                <td><button type="button" id="btnMplus" class="color faltu">m+</button></td>
+                <td><button type="button" id="btnMinus" class="color faltu">m-</button></td>
+                <td><button type="button" id="btnMr" class="color faltu">mr</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="btnClr" class="color color_button" value="clear" onclick="clr()">C</button> </td>
+                <td><button type="button" id="btnPlusMinus" class="color color_button" onclick="plusMinus()" >+/-</button></td>
+                <td><button type="button" id="btnDivide" class="color color_button" value="/" onclick="operator('/')">/</button> </td>
+                <td><button type="button" id="btnMultipy" value="*" class="color color_button" onclick="operator('*')">*</button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" id="btnSeven" value="7" class="color" onclick="display('7')">7</button> </td>
+                <td><button type="button" id="btnEight" value="8" class="color" onclick="display('8')">8</button> </td>
+                <td><button type="button" id="btnNine" value="9" class="color" onclick="display('9')">9</button> </td>
+                <td><button type="button" id="btnMinus" value="-" class="color color_button" onclick="operator('-')">-</button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" id="btnFour" value="4" class="color" onclick="display('4')">4</button> </td>
+                <td><button type="button" id="btnFive" value="5" class="color" onclick="display('5')">5</button> </td>
+                <td><button type="button" id="btnSix" value="6" class="color" onclick="display('6')">6</button> </td>
+                <td><button type="button" id="btnPlus" value="+" class="color color_button" onclick="operator('+')">+</button> </td>
+            </tr>
+            <tr>
+                <td><button type="button" id="btnOne" value="1" class="color" onclick="display('1')">1</button> </td>
+                <td><button type="button" id="btnTwo" value="2" class="color" onclick="display('2')">2</button> </td>
+                <td><button type="button" id="btnThree" value="3" class="color" onclick="display('3')">3</button> </td>
+                <td rowspan="2">
+                    <button type="button" id="btnEqual" class="color equals_to" value="=" onclick="solve()">
+                        <span id="bottomspan">=</span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" id="btnZero" value="0" class="color zero" onclick="showZero('0')">0</button>
+                </td>
+                <td><button type="button" id="btnPoint" value="." class="color" onclick="operator('.')">.</button> </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>   

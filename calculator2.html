@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        div.outerbody {
+            width: 70%;
+            height: auto;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: black;
+            position: relative;
+            top: 100px;
+            /*border:1px solid orange;*/
+        }
+
+        div.textfield {
+            width: 90%;
+            height: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+        }
+
+        input[type=text] {
+            width: 99%;
+            height: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: right;
+            font-size: 40px;
+            font-weight: bold;
+            background-color: lemonchiffon;
+            border: none;
+        }
+
+        input::-webkit-input-placeholder {
+            color: black;
+        }
+
+        div.bodyfeature {
+            width: 80%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2%;
+            display: inline-block;
+        }
+
+        div.innerrows {
+            /*border: 1px solid yellow;*/
+        }
+
+        div.lastrows {
+            position: relative;
+            right: 10%;
+            /*border: 1px solid red;*/
+        }
+
+        div.equal {
+            width: 20%;
+            position: absolute;
+            right: 9%;
+            /*border: 1px solid red;*/
+        }
+
+        button.btnfeature {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 5px;
+            color: white;
+            background-color: black;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px dimgray;
+        }
+
+        button.small {
+            width: 20%;
+            height: auto;
+        }
+
+        button.large {
+            text-align: left;
+            width: 45%;
+            height: auto;
+        }
+
+        button.long {
+            width: 80%;
+            height: 115px;
+        }
+
+        button.color {
+            background-color: saddlebrown;
+        }
+
+        button.equalcolor {
+            background-color: sandybrown;
+        }
+
+        @media screen and (min-width:700px) {
+            div.lastrows {
+                position: relative;
+                right: 9%;
+                /*border: 1px solid red;*/
+            }
+
+            div.equal {
+                width: 20%;
+                position: absolute;
+                float: right;
+                right: 13%;
+                /*border: 1px solid red;*/
+            }
+
+            button.large {
+                width: 42%;
+                height: auto;
+            }
+
+            button.long {
+                width: 75%;
+                height: 120px;
+            }
+        }
+
+        @media screen and (min-width:1250px) {
+            div.lastrows {
+                position: relative;
+                right: 8.5%;
+                /*border: 1px solid red;*/
+            }
+
+            div.equal {
+                width: 20%;
+                position: absolute;
+                float: right;
+                right: 14%;
+                /*border: 1px solid red;*/
+            }
+
+            button.long {
+                width: 75%;
+                height: 125px;
+            }
+        }
+    </style>
+    <script>
+		var datasum = 0;
+		var datasub = 0;
+		var dataproduct = 1;
+		var dataquotient = 1;
+		var sum = 0;
+		var sub = 0;
+		var pro = 0;
+		var quo = 0;
+		function show(int) {
+				txtData.value = txtData.value + int;
+		}
+		function cancel() {
+			txtData.value = "";
+            txtData.placeholder = "0";
+            datasum = 0;
+            datasub = 0;
+            dataproduct = 1;
+			dataquotient = 1;
+			sum = 0;
+			sub = 0;
+			pro = 0;
+			quo = 0;
+		}
+		function add() {
+			datasum = parseFloat(txtData.value) + datasum;
+			txtData.value = "";
+			txtData.placeholder = datasum;
+		}
+		function subtract() {
+			datasub = parseFloat(txtData.value) - datasub;
+			txtData.value = "";
+            txtData.placeholder = datasub;
+		}
+		function multiply() {
+			dataproduct = parseFloat(txtData.value) * dataproduct;
+			txtData.value = "";
+			txtData.placeholder = dataproduct;
+        }
+		function division() {
+            dataquotient = parseFloat(txtData.value) / dataquotient;
+			txtData.value = "";
+            txtData.placeholder = dataquotient;
+		}
+		function equals() {
+			if (datasum != 0) {
+				if (sum == 0) {
+					sum = parseFloat(txtData.value);
+                }
+				datasum = datasum + sum;
+				txtData.value = datasum;
+			}
+			else if (datasub != 0) {
+                if (sub == 0) {
+                    sub = parseFloat(txtData.value);
+                }
+                datasub = datasub - sub;
+                txtData.value = datasub;
+			}
+			else if (dataproduct != 1) {
+				if (pro == 0) {
+					pro = parseFloat(txtData.value);
+                }
+                dataproduct = dataproduct * pro;
+                txtData.value = dataproduct;
+			}
+			else if (dataquotient != 1) {
+				if (quo == 0) {
+					quo = parseFloat(txtData.value);
+				}
+				dataquotient = dataquotient / quo;
+				txtData.value = dataquotient;
+			}
+			else {
+				txtData.placeholder = "0";
+            }
+        }
+		function plusorminus() {
+			if (txtData.value != 0) {
+				txtData.value = 0 - parseFloat(txtData.value);
+			}
+			else {
+                txtData.value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="outerbody">
+        <div class="textfield">
+            <input type="text" id="txtData" name="txtData" placeholder="0" />
+        </div>
+        <div class="bodyfeature innerrows">
+            <button class="small btnfeature color" type="button" id="btnCancel" name="btnCancel" onclick="cancel()">C</button>
+            <button class="small btnfeature color" type="button" id="btnPlusorMinus" name="btnPlusorMinus" onclick="plusorminus()">+/-</button>
+            <button class="small btnfeature color" type="button" id="btnDivision" name="btnDivision" onclick="division()">/</button>
+            <button class="small btnfeature color" type="button" id="btnMultiply" name="btnMultiply" onclick="multiply()">x</button>
+        </div>
+        <div class="bodyfeature innerrows">
+            <button class="small btnfeature" type="button" id="btnSeven" name="btnSeven" value="7" onclick="show(btnSeven.value)">7</button>
+            <button class="small btnfeature" type="button" id="btnEight" name="btnEight" value="8" onclick="show(btnEight.value)">8</button>
+            <button class="small btnfeature" type="button" id="btnNine" name="btnNine" value="9" onclick="show(btnNine.value)">9</button>
+            <button class="small btnfeature color" type="button" id="btnSubtract" name="btnSubtract" onclick="subtract()">-</button>
+        </div>
+        <div class="bodyfeature innerrows">
+            <button class="small btnfeature" type="button" id="btnFour" name="btnFour" value="4" onclick="show(btnFour.value)">4</button>
+            <button class="small btnfeature" type="button" id="btnFive" name="btnFive" value="5" onclick="show(btnFive.value)">5</button>
+            <button class="small btnfeature" type="button" id="btnSix" name="btnSix" value="6" onclick="show(btnSix.value)">6</button>
+            <button class="small btnfeature color" type="button" id="btnAdd" name="btnAdd" onclick="add()">+</button>
+        </div>
+        <div class="bodyfeature lastrows">
+            <button class="small btnfeature" type="button" id="btnOne" name="btnOne" value="1" onclick="show(btnOne.value)">1</button>
+            <button class="small btnfeature" type="button" id="btnTwo" name="btnTwo" value="2" onclick="show(btnTwo.value)">2</button>
+            <button class="small btnfeature" type="button" id="btnThree" name="btnThree" value="3" onclick="show(btnThree.value)">3</button>
+        </div>
+        <div class="bodyfeature equal">
+            <button class="long btnfeature equalcolor" type="button" id="btnEquals" name="btnEquals" onclick="equals()">=</button>
+        </div>
+        <div class="bodyfeature lastrows">
+            <button class="large btnfeature" type="button" id="btnZero" name="btnZero" value="0" onclick="show(btnZero.value)">0</button>
+            <button class="small btnfeature" type="button" id="btnDecimal" name="btnDecimal" value="." onclick="show(btnDecimal.value)">.</button>
+        </div>
+    </div>
+</body>
+</html>
